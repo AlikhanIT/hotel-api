@@ -11,10 +11,6 @@ type Config struct {
 		Host, User, Password, Name string
 		Port                       int
 	}
-	Logging struct {
-		SeqURL    string `mapstructure:"seq_url"`
-		SeqAPIKey string `mapstructure:"seq_api_key"`
-	}
 }
 
 func Load() *Config {
