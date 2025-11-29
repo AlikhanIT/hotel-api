@@ -8,8 +8,7 @@ import (
 type Config struct {
 	Server struct{ Port int }
 	DB     struct {
-		Host, User, Password, Name string
-		Port                       int
+		Url string
 	}
 }
 

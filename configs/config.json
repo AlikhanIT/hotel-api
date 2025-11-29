@@ -1,10 +1,6 @@
 {
   "server": { "port": 8080 },
   "db": {
-    "host": "localhost",
-    "port": 5432,
-    "user": "postgres",
-    "password": "password",
-    "name": "hotel_db"
+    "url": "host=localhost port=5432 user=postgres password=password dbname=hotel_db"
   }
 }
