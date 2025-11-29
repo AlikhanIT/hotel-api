@@ -8,13 +8,12 @@ import (
 type Config struct {
 	Server struct{ Port int }
 	DB     struct {
-		Host, User, Password, Name, SSLMode string
-		Port                                int
+		Host, User, Password, Name string
+		Port                       int
 	}
 	Logging struct {
 		SeqURL    string `mapstructure:"seq_url"`
 		SeqAPIKey string `mapstructure:"seq_api_key"`
-		Enabled   bool
 	}
 }
 

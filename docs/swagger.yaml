@@ -1,0 +1,173 @@
+definitions:
+  domain.Hotel:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      rating:
+        type: number
+    type: object
+  http.HotelDTO:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      name:
+        type: string
+      rating:
+        type: number
+    required:
+    - address
+    - city
+    - name
+    - rating
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/hotels:
+    get:
+      description: Returns all hotels
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Hotel'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get list of hotels
+      tags:
+      - hotels
+    post:
+      consumes:
+      - application/json
+      description: Adds a new hotel
+      parameters:
+      - description: Hotel
+        in: body
+        name: hotel
+        required: true
+        schema:
+          $ref: '#/definitions/http.HotelDTO'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Hotel'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Create hotel
+      tags:
+      - hotels
+  /api/v1/hotels/{id}:
+    delete:
+      description: Removes hotel by ID
+      parameters:
+      - description: Hotel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "204":
+          description: No Content
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Delete hotel
+      tags:
+      - hotels
+    get:
+      description: Returns hotel by its ID
+      parameters:
+      - description: Hotel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Hotel'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get hotel by ID
+      tags:
+      - hotels
+    put:
+      consumes:
+      - application/json
+      description: Updates hotel's data
+      parameters:
+      - description: Hotel ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Hotel
+        in: body
+        name: hotel
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Hotel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Hotel'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Update hotel
+      tags:
+      - hotels
+swagger: "2.0"

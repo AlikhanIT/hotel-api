@@ -5,12 +5,6 @@
     "port": 5432,
     "user": "postgres",
     "password": "password",
-    "name": "hotel_db",
-    "sslmode": "disable"
-  },
-  "logging": {
-    "seq_url": "http://localhost:5341/api/events/raw",
-    "seq_api_key": "",
-    "enabled": false
+    "name": "hotel_db"
   }
 }
